@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Text Editor";
+}
+<form id="textForm">
+    <textarea id="textContent" rows="10" cols="50"></textarea>
+    <button type="button" onclick="saveFile()">Guardar</button>
+</form>
+
+<script>
+    function saveFile() {
+        const textContent = document.getElementById('textContent').value;
+        const blob = new Blob([textContent], { type: 'text/plain' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'archivo.txt';
+        link.click();
+    }
+</script>
+
